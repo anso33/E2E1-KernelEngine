@@ -63,22 +63,6 @@
     <div class="container" id="feed-list-block">
         <form id="feed-list">
             <div th:each="feed : ${feedList}">
-                <!--                <div>-->
-                <!--                    <form id="feed-box">-->
-                <!--                        <div class="row justify-content-md-center" onclick="redirectToFeedUrl('${feed.feedUrl}')">-->
-                <!--                            <div class="col-md-auto">-->
-                <!--                                <p id="feedId" style="display:none;">${feed.feedId}</p>-->
-                <!--                                <p id="feedUrl" style="display:none;">${feed.feedUrl}</p>-->
-
-                <!--                                <p id="feedTitle">제목: ${feed.feedTitle}</p>-->
-                <!--                                <p id="blogWriterName">작성자: ${feed.blogWriterName}</p>-->
-                <!--                                <p id="feedDescription">내용: ${feed.feedDescription}</p>-->
-                <!--                                <p id="feedCreatedAt">생성일: ${feed.feedCreatedAt}</p>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                    </form>-->
-                <!--                </div>-->
-                <!--                <form id="feed-box" th:action="@{/redirectToFeedUrl}" th:object="${feed}">-->
                 <script th:inline="javascript">
                     /* feed 객체 정보를 콘솔에 출력 */
                     console.log([[${feed.feedUrl}]]);
@@ -94,7 +78,6 @@
                         <p id="feedCreatedAt" th:text="'생성일: ' + ${feed.feedCreatedAt}"></p>
                     </div>
                 </div>
-                <!--                </form>-->
             </div>
         </form>
     </div>
@@ -109,12 +92,13 @@
             var feedUrl = $(this).find("#feedUrl").text();
             redirectToFeedUrl(feedUrl);
         });
-
-        function redirectToFeedUrl(feedUrl) {
-            window.location.href = feedUrl;
-        }
     });
-    
+
+    function redirectToFeedUrl(feedUrl) {
+        console.log("redirectToFeedUrl");
+        window.location.href = feedUrl;
+    }
+
 </script>
 
 
